@@ -1,10 +1,6 @@
 book_filename: "GEOG0114"
 rmd_files:
 - index.Rmd
-- 01-spatial-operations.Rmd
-- 02-spatial-autocorrelation.Rmd
-- 03-point-pattern-analysis.Rmd
-- 04-geodemographics.Rmd
 language:
   ui:
     chapter_name: ""
