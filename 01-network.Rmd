@@ -55,3 +55,50 @@ library(dodgr)
 # load major towns and cities, filter Portsmouth
 portsmouth_city <- st_read("data/outline/Major_Towns_and_Cities__December_2015__Boundaries.shp", stringsAsFactors = FALSE) %>% filter(tcity15nm == "Portsmouth")
 ```
+
+To create our network and origin-destination datasets, we will need to first download data directly from OpenStreetMap using a set of specific queries. Once our data is downloaded, we will then need to extract the data from our query results.
+
+We will go ahead and start with downloading and extracting our road network data. First, to **download the data**, we will use the `osmdata` library and the `add_osm_feature()` function. To use the function, we need to provided it with either a *bounding box* of our area of interest (AOI) or a set of points, from which the function will create its own bounding box. You can find out more about this and details on how to construct your own queries in the [data vignette](https://cran.r-project.org/web/packages/osmdata/vignettes/osmdata.html).
+
+To download our road network dataset, we first define a variable to store our bounding box coordinates, `p_bbox()`. We then use this within our OSM query to extract specific types of road segments within that bounding box - the results of our query are then stored in an `osmdata` object. We will select all OSM features with the `highway` tag that are likely to be used by pedestrians (e.g. not `motorways`).
+
+```{r download_osm, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
+# define our bbox coordinates for Portsmouth
+p_bbox <- c(-1.113197,50.775781,-1.026508,50.859941)
+
+# pass bounding box coordinates into the OverPassQuery (opq) function
+# only download features that are not classified as motorway
+osmdata <- opq(bbox = p_bbox ) %>%
+  add_osm_feature(key = 'highway', value = c('primary', 'secondary', 'tertiary', 'residential','path','footway', 'unclassified','living_street', 'pedestrian')) %>% 
+  osmdata_sf()
+```
+
+:::note
+**Note** <br />
+In some instances the OSM query will return an error, especially when several people from the same locations are executing the exact same query. If this happens, you can use a prepared copy all the OSM Portsmouth Data instead: [[Link]](https://github.com/jtvandijk/GEOG0114/tree/master/data/zip/osm_portmouth.zip). These files can be loaded as normal shapefiles.
+:::
+
+You should now see an `osmdata` variable appear in your environment window. The `osmdata` object contains the bounding box of your query, a time-stamp of the query, and then the spatial data as `osm_points`, `osm_lines`, `osm_multilines` and `osm_polgyons` (which are listed with their respective fields also detailed). Some of the spatial features maybe empty, depending on what you asked your query to return. Our next step therefore is to extract our spatial data from our `osmdata` object to create our road network data set. This is in fact incredibly easy, using the traditional `$` R approach to access these spatial features from our object. 
+
+Deciding what to extract is probably the more complicated aspect of this - mainly as you need to understand how to represent your road network, and this will usually be determined by the library/functions you will be using it within. Today, we want to extract the **edges** of the network, i.e. the lines that represent the roads, as well as the **nodes** of the network, i.e. the points that represent the locations at which the roads intersect. For our points, we will just keep the `osm_id` data field, just in case we need to refer to this later. For our lines, we will keep a little more information that we might want to use either within our road network or analysis, including the type of road, what the maximum speed is on the road, and whether the road is one-way or not. 
+
+```{r roadnetwork, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
+# extract the points, with their osm_id.
+ports_roads_nodes <- osmdata$osm_points[, "osm_id"]
+
+# extract the lines, with their osm_id, name, type of highway, max speed and oneway attributes 
+ports_roads_edges <- osmdata$osm_lines[, c("osm_id", "name", "highway", "maxspeed", "oneway")]
+```
+
+To check our data set, we can quickly plot the edges of our road network using the `plot()` function:
+
+```{r networkplot, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
+plot(ports_roads_edges, max.plot=1)
+```
+
+Because we are focusing on walking, we will overwrite the `oneway` variable by suggesting that none of the road segments are restricted to one-way traffic. 
+
+```{r roadnetwork-no-oneway, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
+# overwrite one-way default
+ports_roads_edges$oneway <- "no"
+```
