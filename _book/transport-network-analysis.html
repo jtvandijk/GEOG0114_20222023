@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis</title>
+  <meta name="description" content="1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis handbook." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://jtvandijk.github.io/GEOG0114/" />
+  
+  <meta property="og:description" content="1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis handbook." />
+  <meta name="github-repo" content="jtvandijk/GEOG0114" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis" />
+  
+  <meta name="twitter:description" content="1 Transport Network Analysis | GEOG0114: Principles of Spatial Analysis handbook." />
+  
+
+<meta name="author" content="Justin van Dijk" />
+
+
+<meta name="date" content="2022-08-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="assets/custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo">
+<a href="https://www.ucl.ac.uk/module-catalogue/modules/principles-of-spatial-analysis-GEOG0114"><img src="images/general/ucl_logo.png">
+</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#module-overview" id="toc-module-overview">Module overview</a></li>
+<li><a href="transport-network-analysis.html#transport-network-analysis" id="toc-transport-network-analysis"><span class="toc-section-number">1</span> Transport Network Analysis</a>
+<ul>
+<li><a href="transport-network-analysis.html#reading-w07" id="toc-reading-w07"><span class="toc-section-number">1.1</span> Reading list</a></li>
+<li><a href="transport-network-analysis.html#network-analysis" id="toc-network-analysis"><span class="toc-section-number">1.2</span> Network Analysis</a>
+<ul>
+<li><a href="transport-network-analysis.html#accessibility-to-fast-food-outlets" id="toc-accessibility-to-fast-food-outlets"><span class="toc-section-number">1.2.1</span> Accessibility to fast-food outlets</a></li>
+<li><a href="transport-network-analysis.html#loading-data-w07" id="toc-loading-data-w07"><span class="toc-section-number">1.2.2</span> Loading data</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GEOG0114: Principles of Spatial Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="transport-network-analysis" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Transport Network Analysis</h1>
+<p>This week we will cover a different type of data: network data. We will take a look at different types of network analysis and how they apply to different applications and can be used within spatial analysis. For our practical component, we will look at current some approaches to analyse road networks in R using the <code>dodgr</code> library to calculate the network distance between two points (i.e. an origin and a destination). These distances can then be used to calculate the number of a resource (e.g. fast-food outlets) within a certain distance of a POI, e.g. a school or population-weighted centroid.</p>
+<div id="reading-w07" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Reading list</h2>
+<div id="essential-readings" class="section level4 unnumbered">
+<h4>Essential readings</h4>
+<ul>
+<li>Geurs, K., Van Wee, B. 2004. Accessibility evaluation of land-use and transport strategies: review and research directions. <em>Journal of Transport Geography</em> 12(2): 127-140. <a href="https://doi.org/10.1016/j.jtrangeo.2003.10.005">[Link]</a></li>
+<li>Higgins, C., Palm, M. DeJohn, A. <em>et al.</em> 2022. Calculating place-based transit accessibility: Methods, tools and algorithmic dependence. <em>Journal of Transport and Land Use</em> 15(1): 95-116. <a href="https://doi.org/10.5198/jtlu.2022.2012">[Link]</a></li>
+<li>Neutens, T. Schwanen, T. and Witlox, F. 2011. The prism of everyday life: Towards a new research agenda for time geography. <em>Transport Reviews</em> 31(1): 25-47. <a href="https://doi.org/10.1080/01441647.2010.484153">[Link]</a></li>
+<li>Schwanen, T. and De Jong, T. 2008. Exploring the juggling of responsibilities with space-time accessibility analysis. <em>Urban Geography</em> 29(6): 556-580. <a href="https://doi.org/10.2747/0272-3638.29.6.556">[Link]</a></li>
+</ul>
+</div>
+<div id="suggested-readings" class="section level4 unnumbered">
+<h4>Suggested readings</h4>
+<ul>
+<li>Van Dijk, J., Krygsman, S. and De Jong, T. 2015. Toward spatial justice: The spatial equity effects of a toll road in Cape Town, South Africa. <em>Journal of Transport and Land Use</em> 8(3): 95-114. <a href="https://doi.org/10.5198/jtlu.2015.555">[Link]</a></li>
+<li>Van Dijk, J. and De Jong, T. 2017. Post-processing GPS-tracks in reconstructing travelled routes in a GIS-environment: network subset selection and attribute adjustment. <em>Annals of GIS</em> 23(3): 203-217. <a href="https://doi.org/10.1080/19475683.2017.1340340">[Link]</a></li>
+</ul>
+</div>
+</div>
+<div id="network-analysis" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Network Analysis</h2>
+<p>The term network analysis covers a wide range of analysis techniques, from complex network analysis, social network analysis, link analysis, as well as road network analysis. A network or network graph is constituted by a collection of vertices that are connected to one another by edges. Note, vertices may also be called nodes or points, whilst edges may be called links or lines. Within social network analysis, you may find the terms actors (the vertices) and ties or relations (the edges) also used.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:07-network-graph"></span>
+<img src="images/w07/network-graph.png" alt="Visualising networks through vertices and edges." width="640" />
+<p class="caption">
+Figure 1.1: Visualising networks through vertices and edges.
+</p>
+</div>
+<p>Understanding that networks are formed through the connections of vertices and edges, we can think of many naturally and manmade occurring networks that also have a precise geography to them (i.e. their distribution can be mapped directly within geographic space), including rivers connected with tributaries and animal tracks, to electricity pylons and cables and our road and street networks that form crucial parts of our infrastructure.</p>
+<p>The latter, in particular, have been a substantial focus of those working within spatial analysis over the last two decades, particularly with routing applications now dominating much of our day-to-day technology, from personal route-planning and ride-share apps to large-scale logistics and infrastructure applications, including the delivery operations behind all of our online shopping and even <a href="https://www.arcgis.com/apps/webappviewer/index.html?id=2de764a9303848ffb9a4cac0bd0b1aab">Scotland’s Trunk Road Gritters</a>.</p>
+<p>Alongside this development of routing applications, GIS analysts, geographers and public health specialists have also identified the utility of network analysis within geographic space to calculate distance-based measurement and coverage buffers that can be used as part of accessibility studies that look to understand the provision of a specific resource (e.g. greenspaces, hospitals or even fast-food stores) to a certain area of population.</p>
+<div id="accessibility-to-fast-food-outlets" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Accessibility to fast-food outlets</h3>
+<p>For this week’s practical, we will be using Portsmouth in the UK as our area of interest for our analysis. One prominent topic within the city is the issue of public health and childhood obesity. According to figures released in March 2020 by Public Health England, more than one in three school pupils are overweight or obese by the time they finish primary school within the city - higher than the national average of one in four. One potential contributor to the health crisis is the ease and availability of fastfood in the city. We will measure accessibility by understanding how many fast-food outlets are within specific walking distances of each school, starting at 400m, then 800m and finally a 1km walking distance. We will then aggregate these counts at the Lower Super Output Area (LSOA) and compare these results across the city.</p>
+<p>To get this data ready for our spatial and socio-economic analyses, we will need to first calculate the distances between our schools and fast-food outlets. This involves calculating the shortest distance a child would walk between a school and a fast-food outlet, using roads or streets. We will use the <code>dodgr</code> package to conduct a road network analysis between each school and fast-food outlet.</p>
+<div class="note">
+<p><strong>Note</strong><br/>
+All calculations within the <code>dodgr</code> library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.</p>
+</div>
+</div>
+<div id="loading-data-w07" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Loading data</h3>
+<p>The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">File Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Major towns and cities boundaries 2015</td>
+<td align="left"><code>shp</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/data/zip/major_towns.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p>We can now load the required libraries as well as the major towns and cities boundaries <code>shapefile</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="transport-network-analysis.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># libraries</span></span>
+<span id="cb1-2"><a href="transport-network-analysis.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="transport-network-analysis.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="transport-network-analysis.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(tmap)</span></span>
+<span id="cb1-5"><a href="transport-network-analysis.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(osmdata)</span>
+<span id="cb1-6"><a href="transport-network-analysis.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dodgr)</span>
+<span id="cb1-7"><a href="transport-network-analysis.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="transport-network-analysis.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load major towns and cities, filter Portsmouth</span></span>
+<span id="cb1-9"><a href="transport-network-analysis.html#cb1-9" aria-hidden="true" tabindex="-1"></a>portsmouth_city <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;data/outline/Major_Towns_and_Cities__December_2015__Boundaries.shp&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(tcity15nm <span class="sc">==</span> <span class="st">&quot;Portsmouth&quot;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `Major_Towns_and_Cities__December_2015__Boundaries&#39; from data source `/Users/justinvandijk/Dropbox/UCL/Web/jtvandijk.github.io/GEOG0114/data/outline/Major_Towns_and_Cities__December_2015__Boundaries.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 112 features and 5 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -4.204842 ymin: 50.34101 xmax: 1.378014 ymax: 55.03117
+## Geodetic CRS:  WGS 84</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtvandijk/GEOG0114/edit/master/01-network.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["https://github.com/jtvandijk/GEOG0114/raw/master/01-network.Rmd"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -27,12 +27,12 @@ knitr::include_graphics('images/general/data_science_welcome_sm.jpg')
 | 5             | Raster data | [Suitability Mapping II]() |
 |               | **Reading week** | **Reading week** |
 | 6             | Raster data | [Geostatistics]() |
-| 7             | Applied Spatial Analysis | [Transport network analysis]() |
+| 7             | Applied Spatial Analysis | [Transport network analysis](transport-network-analysis.html#transport-network-analysis.html) |
 | 8             | Applied Spatial Analysis | [Geodemographics]() |
 | 9             | Spatial models | [Spatial models I]() | 
 | 10            | Spatial models | [Spatial models II]() | 
 
 :::note
 **Note** <br />
-This GitHub page contains the material for Week 07 ([Transport network analysis]) and Week 08 ([Geodemographics]) of **Principles of Spatial Analysis** 2022-2023. The content for 2021-2022 has been archived and can be found here: [[Link]](https://jtvandijk.github.io/GEOG0114_20212022)
+This GitHub page contains the material for Week 07 ([Transport network analysis](transport-network-analysis.html#transport-network-analysis.html)) and Week 08 ([Geodemographics]) of **Principles of Spatial Analysis** 2022-2023. The content for 2021-2022 has been archived and can be found here: [[Link]](https://jtvandijk.github.io/GEOG0114_20212022)
 :::
