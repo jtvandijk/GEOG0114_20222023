@@ -8,5 +8,6 @@ dplyr
 stringr
 forcats
 sf
+tmap
 osmdata
 dodgr
