@@ -142,15 +142,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="index.html#module-overview" id="toc-module-overview">Module overview</a></li>
 <li><a href="transport-network-analysis.html#transport-network-analysis" id="toc-transport-network-analysis"><span class="toc-section-number">1</span> Transport Network Analysis</a>
 <ul>
-<li><a href="transport-network-analysis.html#reading-w07" id="toc-reading-w07"><span class="toc-section-number">1.1</span> Reading list</a></li>
+<li><a href="transport-network-analysis.html#reading-w08" id="toc-reading-w08"><span class="toc-section-number">1.1</span> Reading list</a></li>
 <li><a href="transport-network-analysis.html#network-analysis" id="toc-network-analysis"><span class="toc-section-number">1.2</span> Network Analysis</a>
 <ul>
 <li><a href="transport-network-analysis.html#accessibility-to-fast-food-outlets" id="toc-accessibility-to-fast-food-outlets"><span class="toc-section-number">1.2.1</span> Accessibility to fast-food outlets</a></li>
-<li><a href="transport-network-analysis.html#loading-data-w07" id="toc-loading-data-w07"><span class="toc-section-number">1.2.2</span> Loading data</a></li>
+<li><a href="transport-network-analysis.html#loading-data-w08" id="toc-loading-data-w08"><span class="toc-section-number">1.2.2</span> Loading data</a></li>
 </ul></li>
 <li><a href="transport-network-analysis.html#accessibility-in-portsmouth" id="toc-accessibility-in-portsmouth"><span class="toc-section-number">1.3</span> Accessibility in Portsmouth</a></li>
-<li><a href="transport-network-analysis.html#assignment-w07" id="toc-assignment-w07"><span class="toc-section-number">1.4</span> Assignment</a></li>
-<li><a href="transport-network-analysis.html#byl-w07" id="toc-byl-w07"><span class="toc-section-number">1.5</span> Before you leave</a></li>
+<li><a href="transport-network-analysis.html#assignment-w08" id="toc-assignment-w08"><span class="toc-section-number">1.4</span> Assignment</a></li>
+<li><a href="transport-network-analysis.html#byl-w08" id="toc-byl-w08"><span class="toc-section-number">1.5</span> Before you leave</a></li>
 </ul></li>
 </ul>
 
@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="transport-network-analysis" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Transport Network Analysis</h1>
 <p>This week we will cover a different type of data: network data. We will take a look at different types of network analysis and how they apply to different applications and can be used within spatial analysis. For our practical component, we will look at current some approaches to analyse road networks in R using the <code>dodgr</code> library to calculate the network distance between two points (i.e. an origin and a destination). These distances can then be used to calculate the number of a resource (e.g. fast-food outlets) within a certain distance of a Point of Interest (e.g. a school or population-weighted centroid).</p>
-<div id="reading-w07" class="section level2" number="1.1">
+<div id="reading-w08" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Reading list</h2>
 <div id="essential-readings" class="section level4 unnumbered">
 <h4>Essential readings</h4>
@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.2</span> Network Analysis</h2>
 <p>The term network analysis covers a wide range of analysis techniques, from complex network analysis, social network analysis, link analysis, as well as road network analysis. A network or network graph is constituted by a collection of vertices that are connected to one another by edges. Note, vertices may also be called nodes or points, whilst edges may be called links or lines. Within social network analysis, you may find the terms actors (the vertices) and ties or relations (the edges) also used.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:network-graph-picca"></span>
-<img src="images/w07/network-graph.png" alt="Visualising networks through vertices and edges." width="640" />
+<img src="images/w08/network-graph.png" alt="Visualising networks through vertices and edges." width="640" />
 <p class="caption">
 Figure 1.1: Visualising networks through vertices and edges.
 </p>
@@ -212,7 +212,7 @@ Figure 1.1: Visualising networks through vertices and edges.
 All calculations within the <code>dodgr</code> library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.</p>
 </div>
 </div>
-<div id="loading-data-w07" class="section level3" number="1.2.2">
+<div id="loading-data-w08" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Loading data</h3>
 <p>The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.</p>
 <table>
@@ -329,12 +329,12 @@ The <code>dodgr</code> package documentation explains that components are number
 <pre><code>## [1] 55168</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="transport-network-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect on a plot</span></span>
 <span id="cb12-2"><a href="transport-network-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dodgr_to_sf</span>(graph_connected), <span class="at">max.plot =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="GEOG0114_files/figure-html/network_graph_extract-1.png" width="672" />
-:::note
-<strong>Note</strong> <br/>
-OpenStreetMap is a living dataset, meaning that changes are made on a continuous basis; as such it may very well possible that the number of remaining road segments as shown above may differ when you run this analysis.
-:::note</p>
-<p>Now we have our connected subgraph, will can use the <code>dodgr_distances()</code> function to calculate the network distances between every possible Origin and Destination. In this function, we first pass our <code>graph</code>, then our Origin points (schools), in the <code>from</code> argument, and then our Destination points (fast-food outlets), in the <code>to</code> argument. One thing to note is our addition of the <code>st_coordinates()</code> function as we pass our two point data sets within the <code>from</code> and <code>to</code> functions as we need to supplement our Origins and Destinations in a matrix format. For all Origins and Destinations, <code>dodgr_distances()</code> will map the points to the <strong>closest network points</strong>, and return corresponding shortest-path distances.</p>
+<p><img src="GEOG0114_files/figure-html/network_graph_extract-1.png" width="672" /></p>
+<div class="note">
+<p><strong>Note</strong> <br/>
+OpenStreetMap is a living dataset, meaning that changes are made on a continuous basis; as such it may very well possible that the number of remaining road segments as shown above may differ when you run this analysis.</p>
+</div>
+<p>Now we have our connected subgraph, will can use the <code>dodgr_distances()</code> function to calculate the network distances between every possible Origin and Destination. In the <code>dodgr_distances()</code> function, we first pass our <code>graph</code>, then our Origin points (schools), in the <code>from</code> argument, and then our Destination points (fast-food outlets), in the <code>to</code> argument. One thing to note is our addition of the <code>st_coordinates()</code> function as we pass our two point data sets within the <code>from</code> and <code>to</code> functions as we need to supplement our Origins and Destinations in a matrix format. For all Origins and Destinations, <code>dodgr_distances()</code> will map the points to the <strong>closest network points</strong>, and return corresponding shortest-path distances.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="transport-network-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a distance matrix between schools and fast-food stores</span></span>
 <span id="cb13-2"><a href="transport-network-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>sch_to_ff_calc <span class="ot">&lt;-</span> <span class="fu">dodgr_distances</span>(graph_connected, <span class="at">from =</span> <span class="fu">st_coordinates</span>(ports_schools),</span>
 <span id="cb13-3"><a href="transport-network-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="fu">st_coordinates</span>(ports_ff), <span class="at">shortest =</span> <span class="cn">TRUE</span>, <span class="at">pairwise =</span> <span class="cn">FALSE</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
@@ -419,12 +419,12 @@ OpenStreetMap is a living dataset, meaning that changes are made on a continuous
 ## 1 3496.759 3511.793 3511.793 3607.952 3607.952 3637.018 3374.812 3511.793
 ##        311      312      313
 ## 1 2722.797 597.1904 3530.288</code></pre>
+<p>Our output shows the calculations for the first school - and the distances between the school and every fast-food outlet. Because we manually overwrote the values for all one-way streets as well as that we extracted the larges connected graph only, we currently should not have any <code>NA</code> values.</p>
 <div class="note">
 <p><strong>Note</strong> <br/>
 The <a href="https://cran.r-project.org/web/packages/dodgr/vignettes/dodgr.html#4_Distance_Matrices:_dodgr_dists()"><code>dodgr</code> vignette</a> notes that
 a distance matrix obtained from running <code>dodgr_distances</code> on <code>graph_connected</code> should generally contain no <code>NA</code> values, although some points may still be effectively unreachable due to one-way connections (or streets). Thus, routing on the largest connected component of a directed graph ought to be expected to yield the minimal number of <code>NA</code> values, which may sometimes be more than zero. Note further that spatial routing points (expressed as from and/or to arguments) will in this case be mapped to the nearest vertices of <code>graph_connected</code>, rather than the potentially closer nearest points of the full graph.</p>
 </div>
-<p>Our output shows the calculations for the first school - and the distances between the school and every fast-food outlet. Because we manually overwrote the values for all one-way streets as well as that we extracted the larges connected graph only, we currently should not have any <code>NA</code> values.</p>
 <p>The next step of processing all depends on what you are trying to assess - here we want to understand which schools have a higher accessibility of fast-food outlets compared to others, quantified by how many outlets are within walking distance of specific distances. We will therefore look to count how many outlets are with walking distance from each school and store this as a new column within our <code>ports_school</code> data frame.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="transport-network-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fastfood outlets within 400m</span></span>
 <span id="cb16-2"><a href="transport-network-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a>ports_schools<span class="sc">$</span>ff_within_400m <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(sch_to_ff_calc <span class="sc">&lt;=</span> <span class="dv">400</span>)</span>
@@ -458,7 +458,7 @@ a distance matrix obtained from running <code>dodgr_distances</code> on <code>gr
 <p><img src="GEOG0114_files/figure-html/w10-bubble-maps-1.png" width="672" /></p>
 <p>The map shows that areas with greater access/exposure to fast-food outlets (denoted by the larger symbols) appear to be within the city centre and in the south, whereas those schools in the north have less exposure. However, with additional information one would also be able to see that these two areas correlate quite well with the more commercial areas within Portsmouth, the high street and an area known as Gunwharf Quays. This suggests there are complexities in understanding accessibility as well as trying to apply specific policies such as banning new fast-food takeaways within a 400m range of school, particularly if these schools are in commercial areas.</p>
 </div>
-<div id="assignment-w07" class="section level2" number="1.4">
+<div id="assignment-w08" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Assignment</h2>
 <p>Now you have the number of fast-food outlets within specific distances from each school, the assignment for this week is to aggregate fast-food accessibility to the LSOA scale. After aggregating these distance calculations to the LSOA scale, you will then compare accessibility to the <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019">2019 Index of Multiple Deprivation</a>.</p>
 <div class="note">
@@ -482,12 +482,14 @@ This skills and steps required for this analysis are not just based on this week
 </ol>
 <div id="bonus" class="section level4 unnumbered">
 <h4>Bonus</h4>
-<p>Some bonus questions to think about:
-1. Try to understand how the different weight profiles work, how one would go about creating your own weight profile, and how to using a different weight profile may affect the results of your analysis.
-2. Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?</p>
+<p>Some bonus questions to think about:</p>
+<ol style="list-style-type: decimal">
+<li>Try to understand how the different weight profiles work, how one would go about creating your own weight profile, and how to using a different weight profile may affect the results of your analysis.</li>
+<li>Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?</li>
+</ol>
 </div>
 </div>
-<div id="byl-w07" class="section level2" number="1.5">
+<div id="byl-w08" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Before you leave</h2>
 <p>Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, <a href="https://www.youtube.com/watch?v=fFw7q-BLxLA">you have now reached the end of this week’s content</a>!</p>
 

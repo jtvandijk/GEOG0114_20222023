@@ -1,7 +1,7 @@
 # Transport Network Analysis
 This week we will cover a different type of data: network data. We will take a look at different types of network analysis and how they apply to different applications and can be used within spatial analysis. For our practical component, we will look at current some approaches to analyse road networks in R using the `dodgr` library to calculate the network distance between two points (i.e. an origin and a destination). These distances can then be used to calculate the number of a resource (e.g. fast-food outlets) within a certain distance of a Point of Interest (e.g. a school or population-weighted centroid). 
 
-## Reading list {#reading-w07}
+## Reading list {#reading-w08}
 #### Essential readings {-}
 - Geurs, K., Van Wee, B. 2004. Accessibility evaluation of land-use and transport strategies: review and research directions. *Journal of Transport Geography* 12(2): 127-140. [[Link]](https://doi.org/10.1016/j.jtrangeo.2003.10.005)
 - Higgins, C., Palm, M. DeJohn, A. *et al.* 2022. Calculating place-based transit accessibility: Methods, tools and algorithmic dependence. *Journal of Transport and Land Use* 15(1): 95-116. [[Link]](https://doi.org/10.5198/jtlu.2022.2012)
@@ -16,7 +16,7 @@ This week we will cover a different type of data: network data. We will take a l
 The term network analysis covers a wide range of analysis techniques, from complex network analysis, social network analysis, link analysis, as well as road network analysis. A network or network graph is constituted by a collection of vertices that are connected to one another by edges. Note, vertices may also be called nodes or points, whilst edges may be called links or lines. Within social network analysis, you may find the terms actors (the vertices) and ties or relations (the edges) also used. 
 
 ```{r network-graph-picca, echo=FALSE, cache=TRUE, fig.align='center', fig.cap='Visualising networks through vertices and edges.'}
-knitr::include_graphics("images/w07/network-graph.png")
+knitr::include_graphics("images/w08/network-graph.png")
 ```
 
 Understanding that networks are formed through the connections of vertices and edges, we can think of many naturally and manmade occurring networks that also have a precise geography to them (i.e. their distribution can be mapped directly within geographic space), including rivers connected with tributaries and animal tracks, to electricity pylons and cables and our road and street networks that form crucial parts of our infrastructure. 
@@ -35,7 +35,7 @@ To get this data ready for our spatial and socio-economic analyses, we will need
 All calculations within the `dodgr` library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.
 :::
 
-### Loading data {#loading-data-w07}
+### Loading data {#loading-data-w08}
 The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.
 
 | File                                    | File Type         | Link |
@@ -163,12 +163,13 @@ nrow(graph_connected)
 # inspect on a plot
 plot(dodgr_to_sf(graph_connected), max.plot=1)
 ```
+
 :::note
 **Note** <br/>
 OpenStreetMap is a living dataset, meaning that changes are made on a continuous basis; as such it may very well possible that the number of remaining road segments as shown above may differ when you run this analysis. 
-:::note
+:::
 
-Now we have our connected subgraph, will can use the `dodgr_distances()` function to calculate the network distances between every possible Origin and Destination. In this function, we first pass our `graph`, then our Origin points (schools), in the `from` argument, and then our Destination points (fast-food outlets), in the `to` argument. One thing to note is our addition of the `st_coordinates()` function as we pass our two point data sets within the `from` and `to` functions as we need to supplement our Origins and Destinations in a matrix format. For all Origins and Destinations, `dodgr_distances()` will map the points to the **closest network points**, and return corresponding shortest-path distances. 
+Now we have our connected subgraph, will can use the `dodgr_distances()` function to calculate the network distances between every possible Origin and Destination. In the `dodgr_distances()` function, we first pass our `graph`, then our Origin points (schools), in the `from` argument, and then our Destination points (fast-food outlets), in the `to` argument. One thing to note is our addition of the `st_coordinates()` function as we pass our two point data sets within the `from` and `to` functions as we need to supplement our Origins and Destinations in a matrix format. For all Origins and Destinations, `dodgr_distances()` will map the points to the **closest network points**, and return corresponding shortest-path distances. 
 
 ```{r distance_calc, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
 # create a distance matrix between schools and fast-food stores
@@ -182,13 +183,13 @@ Let's inspect the first row of our output.
 head(sch_to_ff_calc, n=1)
 ```
 
+Our output shows the calculations for the first school - and the distances between the school and every fast-food outlet. Because we manually overwrote the values for all one-way streets as well as that we extracted the larges connected graph only, we currently should not have any `NA` values.
+
 :::note
 **Note** <br/>
 The [`dodgr` vignette](https://cran.r-project.org/web/packages/dodgr/vignettes/dodgr.html#4_Distance_Matrices:_dodgr_dists()) notes that
 a distance matrix obtained from running `dodgr_distances` on `graph_connected` should generally contain no `NA` values, although some points may still be effectively unreachable due to one-way connections (or streets). Thus, routing on the largest connected component of a directed graph ought to be expected to yield the minimal number of `NA` values, which may sometimes be more than zero. Note further that spatial routing points (expressed as from and/or to arguments) will in this case be mapped to the nearest vertices of `graph_connected`, rather than the potentially closer nearest points of the full graph.
 :::
-
-Our output shows the calculations for the first school - and the distances between the school and every fast-food outlet. Because we manually overwrote the values for all one-way streets as well as that we extracted the larges connected graph only, we currently should not have any `NA` values.
 
 The next step of processing all depends on what you are trying to assess - here we want to understand which schools have a higher accessibility of fast-food outlets compared to others, quantified by how many outlets are within walking distance of specific distances. We will therefore look to count how many outlets are with walking distance from each school and store this as a new column within our `ports_school` data frame. 
 
@@ -233,7 +234,7 @@ tm_shape(ports_schools) +
 
 The map shows that areas with greater access/exposure to fast-food outlets (denoted by the larger symbols) appear to be within the city centre and in the south, whereas those schools in the north have less exposure. However, with additional information one would also be able to see that these two areas correlate quite well with the more commercial areas within Portsmouth, the high street and an area known as Gunwharf Quays. This suggests there are complexities in understanding accessibility as well as trying to apply specific policies such as banning new fast-food takeaways within a 400m range of school, particularly if these schools are in commercial areas.
 
-## Assignment {#assignment-w07}
+## Assignment {#assignment-w08}
 Now you have the number of fast-food outlets within specific distances from each school, the assignment for this week is to aggregate fast-food accessibility to the LSOA scale. After aggregating these distance calculations to the LSOA scale, you will then compare accessibility to the [2019 Index of Multiple Deprivation](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019). 
 
 :::note
@@ -256,8 +257,9 @@ In order to do this you will, at least, need to take the following steps:
 
 #### Bonus {-}
 Some bonus questions to think about:
+
 1. Try to understand how the different weight profiles work, how one would go about creating your own weight profile, and how to using a different weight profile may affect the results of your analysis. 
 2. Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?
 
-## Before you leave {#byl-w07}
+## Before you leave {#byl-w08}
 Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, [you have now reached the end of this week's content](https://www.youtube.com/watch?v=fFw7q-BLxLA)!

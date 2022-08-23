@@ -1,9 +1,9 @@
 fig:network-graph-picca
 transport-network-analysis
-reading-w07
+reading-w08
 network-analysis
 accessibility-to-fast-food-outlets
-loading-data-w07
+loading-data-w08
 accessibility-in-portsmouth
-assignment-w07
-byl-w07
+assignment-w08
+byl-w08
