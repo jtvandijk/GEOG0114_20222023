@@ -27,7 +27,7 @@ knitr::include_graphics('images/general/data_science_welcome_sm.jpg')
 | 5             | Raster data | [Suitability Mapping II]() |
 |               | **Reading week** | **Reading week** |
 | 6             | Raster data | [Geostatistics]() |
-| 7             | Applied Spatial Analysis | [Geodemographics]() |
+| 7             | Applied Spatial Analysis | [Geodemographics](geodemographics.html) |
 | 8             | Applied Spatial Analysis | [Transport network analysis](transport-network-analysis.html) |
 | 9             | Spatial models | [Spatial models I]() | 
 | 10            | Spatial models | [Spatial models II]() | 

@@ -1,0 +1,12 @@
+# Geodemographics
+This week we will see how we can use socio-demographic and socio-economic data to characterise neighbourhoods using **geodemographics**. Geodemographics is the *analysis of people by where they live’ (Harris et al. 2005) and as such entails representing the individual and collective identities that are manifest in observable neighbourhood structure* ([Longley 2012](https://www.tandfonline.com/doi/pdf/10.1080/13658816.2012.719623?needAccess=true)). We will look at geodemographics by focusing on a existing geodemographic classification known as the [Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification).
+
+## Reading list {#reading_w07}
+#### Essential readings {-}
+- Longley, P. A. 2012. Geodemographics and the practices of geographic information science. *International Journal of Geographical Information Science* 26(12), pp.2227-2237. [[Link]](https://doi.org/10.1080/13658816.2012.719623)
+- Martin, D. *et al.* 2018. Origin-destination geodemographics for analysis of travel to work flows. *Computers, Environment and Urban Systems* 67, pp.68-79. [[Link]](https://doi.org/10.1016/j.compenvurbsys.2017.09.002)
+- Singleton, A., Alexiou, A. and Savani, R. 2020. Mapping the geodemographics of digital inequality in Great Britain: An integration of machine learning into small area estimation. *Computers, Environment and Urban Systems* 82, 101486. [[Link]](https://doi.org/10.1016/j.compenvurbsys.2020.101486)
+- Singleton, A. and Spielman, S. 2014. The past, present, and future of geodemographic research in the United States and United Kingdom. *The Professional Geographer* 66(4), pp.558-567. [[Link]](https://doi.org/10.1080/00330124.2013.848764)
+
+#### Suggested readings {-}
+- Goodman, A. *et al.* 2011. Characterising socio-economic inequalities in exposure to air pollution: A comparison of socio-economic markers and scales of measurement. *Health & Place* 17(3), pp.767-774. [[Link]](https://doi.org/10.1016/j.healthplace.2011.02.002)

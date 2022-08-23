@@ -1,7 +1,8 @@
 book_filename: "GEOG0114"
 rmd_files:
 - index.Rmd
-- 01-network.Rmd
+- 01-geodemographics.Rmd
+- 02-network.Rmd
 language:
   ui:
     chapter_name: ""

@@ -1,4 +1,6 @@
 fig:network-graph-picca
+geodemographics
+reading_w07
 transport-network-analysis
 reading-w08
 network-analysis
