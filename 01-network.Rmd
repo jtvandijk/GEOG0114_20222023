@@ -44,7 +44,7 @@ The first dataset we need to download will help with the visualisation of our re
 
 We can now load the required libraries as well as the major towns and cities boundaries `shapefile`.
 
-```{r load-ports, warnings=FALSE, message=FALSE, cache=TRUE, tidy=TRUE}
+```{r load-ports, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
 # libraries
 library(tidyverse)
 library(sf)
