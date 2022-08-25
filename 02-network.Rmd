@@ -33,7 +33,7 @@ To execute this analysis, we will need to first calculate the distances between 
 All calculations within the `dodgr` library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.
 :::
 
-### Loading data {#loading-data-w08}
+### Loading your data {#loading-data-w08}
 The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.
 
 | File                                    | File Type         | Link |
@@ -113,7 +113,7 @@ ports_roads_edges$oneway <- "no"
 
 Now we have the network edges, we can turn this into a graph-representation that allows for the calculation of network-based accessibility statistics. 
 
-### Accessibility in Portsmouth
+### Case study
 Before we can construct our full network graph for the purpose of accessibility analysis, we need to also provide our **Origin** and **Destination** points, i.e. the data points we wish to calculate the distances between. According to the `dodgr` documentation, these points need to be in either a vector or matrix format, containing the two coordinates for each point for the origins and for the destinations.
 
 As for our Portsmouth scenario we are interested in calculating the shortest distances between schools and fast-food outlets, we need to try and download these datasets - again we will turn to OpenStreetMap. Following a similar structure to our query above, we will use our knowledge of OpenStreetMap `keys` and `values` to extract the points of Origins (schools) and Destinations (fast-food outlets) we are interested in:

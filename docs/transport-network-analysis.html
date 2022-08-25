@@ -150,8 +150,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="transport-network-analysis.html#network-analysis" id="toc-network-analysis"><span class="toc-section-number">2.2</span> Network Analysis</a>
 <ul>
 <li><a href="transport-network-analysis.html#accessibility-to-fast-food-outlets" id="toc-accessibility-to-fast-food-outlets"><span class="toc-section-number">2.2.1</span> Accessibility to fast-food outlets</a></li>
-<li><a href="transport-network-analysis.html#loading-data-w08" id="toc-loading-data-w08"><span class="toc-section-number">2.2.2</span> Loading data</a></li>
-<li><a href="transport-network-analysis.html#accessibility-in-portsmouth" id="toc-accessibility-in-portsmouth"><span class="toc-section-number">2.2.3</span> Accessibility in Portsmouth</a></li>
+<li><a href="transport-network-analysis.html#loading-data-w08" id="toc-loading-data-w08"><span class="toc-section-number">2.2.2</span> Loading your data</a></li>
+<li><a href="transport-network-analysis.html#case-study" id="toc-case-study"><span class="toc-section-number">2.2.3</span> Case study</a></li>
 </ul></li>
 <li><a href="transport-network-analysis.html#task-w08" id="toc-task-w08"><span class="toc-section-number">2.3</span> Tutorial task</a></li>
 <li><a href="transport-network-analysis.html#byl-w08" id="toc-byl-w08"><span class="toc-section-number">2.4</span> Before you leave</a></li>
@@ -216,7 +216,7 @@ All calculations within the <code>dodgr</code> library currently need to be run 
 </div>
 </div>
 <div id="loading-data-w08" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Loading data</h3>
+<h3><span class="header-section-number">2.2.2</span> Loading your data</h3>
 <p>The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.</p>
 <table>
 <colgroup>
@@ -298,8 +298,8 @@ In some instances the OSM query will return an error, especially when several pe
 <span id="cb6-2"><a href="transport-network-analysis.html#cb6-2" aria-hidden="true" tabindex="-1"></a>ports_roads_edges<span class="sc">$</span>oneway <span class="ot">&lt;-</span> <span class="st">&quot;no&quot;</span></span></code></pre></div>
 <p>Now we have the network edges, we can turn this into a graph-representation that allows for the calculation of network-based accessibility statistics.</p>
 </div>
-<div id="accessibility-in-portsmouth" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Accessibility in Portsmouth</h3>
+<div id="case-study" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Case study</h3>
 <p>Before we can construct our full network graph for the purpose of accessibility analysis, we need to also provide our <strong>Origin</strong> and <strong>Destination</strong> points, i.e. the data points we wish to calculate the distances between. According to the <code>dodgr</code> documentation, these points need to be in either a vector or matrix format, containing the two coordinates for each point for the origins and for the destinations.</p>
 <p>As for our Portsmouth scenario we are interested in calculating the shortest distances between schools and fast-food outlets, we need to try and download these datasets - again we will turn to OpenStreetMap. Following a similar structure to our query above, we will use our knowledge of OpenStreetMap <code>keys</code> and <code>values</code> to extract the points of Origins (schools) and Destinations (fast-food outlets) we are interested in:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="transport-network-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download schools from OSM</span></span>

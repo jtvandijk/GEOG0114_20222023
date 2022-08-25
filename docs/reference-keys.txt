@@ -6,6 +6,6 @@ reading-w08
 network-analysis
 accessibility-to-fast-food-outlets
 loading-data-w08
-accessibility-in-portsmouth
+case-study
 task-w08
 byl-w08
