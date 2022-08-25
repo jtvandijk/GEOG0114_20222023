@@ -242,7 +242,7 @@ tm_shape(ports_schools) +
 
 The map shows that areas with greater access/exposure to fast-food outlets (denoted by the larger symbols) appear to be within the city centre and in the south, whereas those schools in the north have less exposure. However, with additional contextual information one would also be able to see that these two areas correlate quite well with the more commercial areas within Portsmouth, the high street and an area known as Gunwharf Quays. This suggests there are complexities in understanding accessibility as well as trying to apply specific policies such as banning new fast-food takeaways within a 400m range of school, particularly if these schools are in commercial areas.
 
-## Assignment {#assignment-w08}
+## Tutorial task {#task-w08}
 Now you have calculated the number of fast-food outlets within specific distances from every school in Portsmouth, your task is to estimate the accessibility of fast-food outlets at the LSOA scale and compare this to the [2019 Index of Multiple Deprivation](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019). 
 
 :::note
@@ -265,12 +265,9 @@ One way of doing this, is by taking some of the following steps:
 
 Using your approach what do you think: are fast-food restaurants, on average, more accessible for students at schools that are located within LSOAs with a lower IMD decile when compared to students at schools that are located within LSOAs with a higher IMD decile?
 
-#### Bonus {-}
-Some additional challenges to consider:
+## Before you leave {#byl-w08}
+Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, [you have now reached the end of this week's content](https://www.youtube.com/watch?v=fFw7q-BLxLA). However, some additional things that you can consider in the context of accessibility analysis:
 
 1. Try to understand how the different weight profiles of the `dodgr` package work, how one would go about creating your own weight profile, and how using a different weight profile may affect the results of your analysis. 
 2. Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?
-3. Currently all Origins and Destinations are mapped onto the closest network point. Why you think this is done? Is this always the best option? What alternative methods could you think of and how would you implement these?
-
-## Before you leave {#byl-w08}
-Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, [you have now reached the end of this week's content](https://www.youtube.com/watch?v=fFw7q-BLxLA)!
+3. Consider how in this analysis all Origins and Destinations are mapped onto the closest network point. Why you think this is done? Is this always the best option? What alternative methods could you think of and how would you implement these?

@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="transport-network-analysis.html#loading-data-w08" id="toc-loading-data-w08"><span class="toc-section-number">2.2.2</span> Loading data</a></li>
 <li><a href="transport-network-analysis.html#accessibility-in-portsmouth" id="toc-accessibility-in-portsmouth"><span class="toc-section-number">2.2.3</span> Accessibility in Portsmouth</a></li>
 </ul></li>
-<li><a href="transport-network-analysis.html#assignment-w08" id="toc-assignment-w08"><span class="toc-section-number">2.3</span> Assignment</a></li>
+<li><a href="transport-network-analysis.html#task-w08" id="toc-task-w08"><span class="toc-section-number">2.3</span> Tutorial task</a></li>
 <li><a href="transport-network-analysis.html#byl-w08" id="toc-byl-w08"><span class="toc-section-number">2.4</span> Before you leave</a></li>
 </ul></li>
 </ul>
@@ -468,8 +468,8 @@ a distance matrix obtained from running <code>dodgr_distances</code> on <code>gr
 <p>The map shows that areas with greater access/exposure to fast-food outlets (denoted by the larger symbols) appear to be within the city centre and in the south, whereas those schools in the north have less exposure. However, with additional contextual information one would also be able to see that these two areas correlate quite well with the more commercial areas within Portsmouth, the high street and an area known as Gunwharf Quays. This suggests there are complexities in understanding accessibility as well as trying to apply specific policies such as banning new fast-food takeaways within a 400m range of school, particularly if these schools are in commercial areas.</p>
 </div>
 </div>
-<div id="assignment-w08" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Assignment</h2>
+<div id="task-w08" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tutorial task</h2>
 <p>Now you have calculated the number of fast-food outlets within specific distances from every school in Portsmouth, your task is to estimate the accessibility of fast-food outlets at the LSOA scale and compare this to the <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019">2019 Index of Multiple Deprivation</a>.</p>
 <div class="note">
 <p><strong>Note</strong> <br/>
@@ -491,19 +491,15 @@ This skills and steps required for this analysis are not just based on this week
 <li>For each IMD decile, calculate the average for your chosen aggregate measure and produce a table.</li>
 </ol>
 <p>Using your approach what do you think: are fast-food restaurants, on average, more accessible for students at schools that are located within LSOAs with a lower IMD decile when compared to students at schools that are located within LSOAs with a higher IMD decile?</p>
-<div id="bonus" class="section level4 unnumbered">
-<h4>Bonus</h4>
-<p>Some additional challenges to consider:</p>
-<ol style="list-style-type: decimal">
-<li>Try to understand how the different weight profiles of the <code>dodgr</code> package work, how one would go about creating your own weight profile, and how using a different weight profile may affect the results of your analysis.</li>
-<li>Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?</li>
-<li>Currently all Origins and Destinations are mapped onto the closest network point. Why you think this is done? Is this always the best option? What alternative methods could you think of and how would you implement these?</li>
-</ol>
-</div>
 </div>
 <div id="byl-w08" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Before you leave</h2>
-<p>Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, <a href="https://www.youtube.com/watch?v=fFw7q-BLxLA">you have now reached the end of this week’s content</a>!</p>
+<p>Having finished this tutorial on transport network analysis and, hopefully, having been able to independently conduct some further area-profiling using IMD deciles, <a href="https://www.youtube.com/watch?v=fFw7q-BLxLA">you have now reached the end of this week’s content</a>. However, some additional things that you can consider in the context of accessibility analysis:</p>
+<ol style="list-style-type: decimal">
+<li>Try to understand how the different weight profiles of the <code>dodgr</code> package work, how one would go about creating your own weight profile, and how using a different weight profile may affect the results of your analysis.</li>
+<li>Inspect the unconnected segments of the extracted network. Why are they unconnected? Would they need to be connected? How would one do this?</li>
+<li>Consider how in this analysis all Origins and Destinations are mapped onto the closest network point. Why you think this is done? Is this always the best option? What alternative methods could you think of and how would you implement these?</li>
+</ol>
 
 </div>
 </div>
