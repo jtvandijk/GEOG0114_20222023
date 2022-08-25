@@ -255,11 +255,11 @@ One way of doing this, is by taking some of the following steps:
 1. Download and extract the 2011 LSOA boundaries of Portsmouth.
 2. Download the [2019 Index of Multiple Deprivation](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) scores.
 3. Decide on an accessibility measure, such as:
-    + The average number of fast-food restaurants within X distance of a school within each LSOA.
+    + The average number of fast-food restaurants within `x` meters of a school within each LSOA.
     + The average distance a fast-food restaurant is from a school within each LSOA.
     + The (average) shortest distance a fast-food restaurant is from a school within each LSOA.
     + The minimum shortest distance a fast-food outlet is from a school within each LSOA.
-4. Create a choropleth map of aggregate accessibility to visualse the results.
+4. Create a choropleth map of aggregate accessibility to visualise the results.
 5. Join the 2019 Index of Multiple Deprivation data to your LSOA dataset.
 6. For each IMD decile, calculate the average for your chosen aggregate measure and produce a table. 
 
