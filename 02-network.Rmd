@@ -226,6 +226,7 @@ Just from this simple plot, we can see across our distances some clear geographi
 
 ```{r 07-bubble-maps, warnings=FALSE, message=FALSE, cache=FALSE, tidy=FALSE}
 # create proportional symbol map
+tmap_mode("plot")
 tm_shape(portsmouth_city) + 
   tm_fill(palette = "grey") +
 tm_shape(ports_schools) + 
