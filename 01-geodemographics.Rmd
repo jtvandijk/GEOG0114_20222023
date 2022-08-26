@@ -135,9 +135,9 @@ The data set contains the following variables:
 
 #### File download {-}
 | File                                                 | Type           | Link |
-| :------                                              | :------        | :------ |
-| MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/data/zip/msoa_iuc_input.zip) |
+| :-----------                                         | :--            | :-- |
 | Middle-layer Super Output Areas Great Britain 2011   | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/data/zip/gb_msoa11_sim.zip) |
+| MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/data/zip/msoa_iuc_input.zip) |
 
 ```{r 07-load-date-for-those-mean-ks, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
 # load data
@@ -147,3 +147,180 @@ iuc_input <- read_csv('data/index/msoa_iuc_input.csv')
 head(iuc_input)
 ```
 
+Before running our **k-means** clustering algorithm, we need to extract the data which we want to use; i.e. we need to remove all the columns with data that we do not want to include in the clustering process.
+
+```{r 07-select-the-columns, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
+# column names
+names(iuc_input)
+
+# extract columns by index
+cluster_data <- iuc_input[,c(3:8,10:17,18:20)]
+
+# inspect
+head(cluster_data)
+```
+
+We also need to rescale the data so all input data are presented on a comparable scale: the average download speed data (i.e. `avg_dwn_speed`) is very different to the other data that, for instance, represent the percentage of the population by different age groups.
+
+```{r 07-rescale-those-values, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
+# rescale
+cluster_data <- scale(cluster_data) 
+
+# inspect
+head(cluster_data)
+```
+
+Now our data are all on the same scale, we will start by creating an elbow plot. The [elbow method](https://en.wikipedia.org/wiki/Elbow_method_(clustering)#:~:text=In%20cluster%20analysis%2C%20the%20elbow,number%20of%20clusters%20to%20use%60) is a visual aid that can help in determining the number of clusters in a data set. Remember: this is important because with a **k-means** clustering you need to specify the numbers of clusters *a priori*! 
+
+The elbow method can help as it plots the total explained variation ('Within Sum of Squares') in your data as a function of the number of cluster. The idea is that you pick the number of clusters at the 'elbow' of the curve as this is the point in which the additional variation that would be explained by an additional cluster is decreasing. Effectively this means you are actually running the **k-means** clustering multiple times before running the actual **k-means** clustering algorithm.
+
+```{r 07-settings-and-options, warnings=FALSE, message=FALSE, echo=FALSE, cache=FALSE, tidy=TRUE}
+# settings
+options(max.print = 15)
+```
+```{r 07-elbow-and-plots, warnings=FALSE, message=FALSE,tidy=TRUE}
+# create empty list to store the within sum of square values 
+wss_values <- list()
+
+# execute a k-means clustering for k=1, k=2, ..., k=15
+for (i in 1:15) {
+  wss_values[i] <- sum(kmeans(cluster_data,centers=i)$withinss)
+}
+
+# inspect
+wss_values
+
+# vector to dataframe
+wss_values <- as.data.frame(wss_values)
+
+# transpose
+wss_values <- as.data.frame(t(wss_values))
+
+# add cluster numbers
+wss_values$cluster <- seq.int(nrow(wss_values))
+names(wss_values) <- c('wss','cluster')
+
+# plot using ggplot2
+ggplot(data=wss_values, aes(x=cluster,y=wss)) +
+  geom_point() +
+  geom_path() + 
+  scale_x_continuous(breaks=seq(1,15)) +
+  xlab('number of clusters') +
+  ylab('within sum of squares')
+```
+
+Based on the elbow plot, we can now choose the number of clusters and it looks like **7** clusters would be a reasonable choice.
+
+<div class="note">
+**Note**<br/>
+The interpretation of an elbow plot can be quite subjective and often multiple options would be justified: **6**, **8**, and perhaps **9** clusters also do not look unreasonable. You would need to try the different options and see what output you get to determine the 'optimal' solution. However, at very least, the elbow plot does give you an idea of what would potentially be an adequate number of clusters. 
+</div>
+
+Now we have decided on the number of clusters (i.e. **7** clusters), we can run our cluster analysis. We will be running this analysis 10 times because there is an element of randomness within the clustering, and we want to make sure we get the optimal clustering output.
+
+```{r 09-run-that-cluster, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
+# create empty list to store the results of the clustering
+clusters <- list()
+
+# create empty variable to store fit
+fit <- NA
+  
+# run the k-means 10 times
+for (i in 1:10){
+  
+  # keep track of the runs
+  print(paste0('starting run: ', i))
+  
+  # run the k-means clustering algorithm to extract 7 clusters
+  clust7 <- kmeans(x=cluster_data, centers=7, iter.max=1000000, nstart=1)
+  
+  # get the total within sum of squares for the run and 
+  fit[i] <- clust7$tot.withinss
+  
+  # update the results of the clustering if the total within sum of squares for the run
+  # is lower than any of the runs that have been executed so far 
+  if (fit[i] < min(fit[1:(i-1)])){
+    clusters <- clust7}
+}
+
+# inspect
+clusters
+
+# inspect
+fit
+```
+
+We now have to execute a bit of post-processing to extract some useful summary data for each cluster: the cluster size (`size`) and mean values for each cluster.
+
+```{r 07-post-process-some-cluster-stuff, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
+# assign to new variable for clarity
+kfit <- clusters
+
+# cluster sizes
+kfit_size <- kfit$size
+
+# inspect
+kfit_size
+
+# mean values for each variable in each cluster
+kfit_mean<- as_tibble(aggregate(cluster_data,by=list(kfit$cluster),FUN=mean))
+names(kfit_mean)[1] <- 'cluster'
+
+# inspect
+kfit_mean
+
+# transform shape to tidy format
+kfit_mean_long <- pivot_longer(kfit_mean, cols=(-cluster))
+
+# plot using ggplot2  
+ggplot(kfit_mean_long, aes(x=cluster, y=value, colour=name)) + 
+  geom_line () +
+  scale_x_continuous(breaks=seq(1,7,by=1)) +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
+Looking at the table with the mean values for each cluster and the graph, we can see, for instance, that only **cluster 2** shows a clear pattern with Internet usage. *Your values may be slightly different because there is this element of randomness within the clustering.* The graph is a little busy, so you might want to look at the cluster groups or variables individually to get a better picture of each cluster. 
+
+```{r 07-map-our-iuc, warnings=FALSE, message=FALSE, tidy=TRUE}
+# read shape
+msoa <- st_read('data/boundaries/gb_msoa11_sim.shp')
+
+# set projection
+st_crs(msoa) = 27700
+
+# simplify for speedier plotting
+msoa <- st_simplify(msoa, dTolerance = 100) 
+
+# join
+cluster_data <- cbind(iuc_input,kfit$cluster)
+msoa <- left_join(msoa,cluster_data,by=c('geo_code'='msoa11cd'))
+
+# plot
+tmap_mode('view')
+tm_shape(msoa) +
+  tm_fill(col='kfit$cluster')
+```
+
+### Tutorial task II {#task_w07_2}
+The creation of a geodemographic classification is an **iterative process** of trial and error that involves the addition and removal of variables as well as experimentation with different numbers of clusters. It also might be, for instances, that some clusters are very focused on one group of data (e.g. age) and it could be an idea to group some ages together. If you want to make changes to the clustering solution, you can simply re-run the analysis with a different set of variables or with a different number of clusters by updating the code. However, it would be even simpler if you could automate some of the process. 
+
+Try to create a **R function** that: 
+
+- takes *at least* the following three arguments: **a data frame that contains your input data**, **the number of clusters that you want**, and **a list of input variables**;
+- executes a **k-means** clustering on the input variables and the specified number of clusters; and,
+- produces a `csv` file that contains the **table of means** of the solution.
+
+#### Tips {-}
+- The list of input variables does not have to be a list of *names*, but can also be a list containing the index values of the columns.
+- Google is your friend.
+- Your function should look something like: `automate_k_means(dataframe,number_of_clusters,input_variables)`
+- Feel free to add optional variables that you need to specify if that makes it easier.
+- Have a look at [Hadley Wickhams explanation of functions](https://r4ds.had.co.nz/functions.html) in R.
+
+## Before you leave {#byl-w07}
+Having finished this tutorial, you should now understand the basics of a geodemographic classification. In addition, you should have written a simple function. Although [you have now reached the end of this week's content](https://www.youtube.com/watch?v=8iwBM_YB1sE), you could try and improve your function. Consider:
+
+1. Including *maps* or *graphs* in the code that get automatically saved.
+2. Ensuring that the `csv` outcome does **not** get overwritten every time you run you function.
+3. Including optional arguments in your function with **default values** if certain values are not specified.

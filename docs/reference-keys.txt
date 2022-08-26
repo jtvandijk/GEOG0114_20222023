@@ -7,6 +7,8 @@ geodemographics-1
 internet-user-classification-i
 task_w07_1
 k-means-clustering
+task_w07_2
+byl-w07
 transport-network-analysis
 reading-w08
 network-analysis
