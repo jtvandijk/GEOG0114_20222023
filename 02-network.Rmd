@@ -12,7 +12,7 @@ This week we will cover a different type of data: network data. We will take a l
 - Van Dijk, J., Krygsman, S. and De Jong, T. 2015. Toward spatial justice: The spatial equity effects of a toll road in Cape Town, South Africa. *Journal of Transport and Land Use* 8(3): 95-114. [[Link]](https://doi.org/10.5198/jtlu.2015.555)
 - Van Dijk, J. and De Jong, T. 2017. Post-processing GPS-tracks in reconstructing travelled routes in a GIS-environment: network subset selection and attribute adjustment. *Annals of GIS* 23(3): 203-217. [[Link]](https://doi.org/10.1080/19475683.2017.1340340)
 
-## Network Analysis 
+## Transport Network Analysis 
 The term network analysis covers a wide range of analysis techniques ranging from complex network analysis to social network analysis, and from link analysis to transport network analysis. What the techniques have in common is that they are based on the concept of a **network**. A network or network graph is constituted by a collection of vertices that are connected to one another by edges. Note, vertices may also be called nodes or points, whilst edges may be called links or lines. Within social network analysis, you may find the terms actors (the vertices) and ties or relations (the edges) also used. 
 
 ```{r network-graph-picca, echo=FALSE, cache=TRUE, fig.align='center', fig.cap='Visualising networks with vertices and edges.'}
@@ -33,7 +33,7 @@ To execute this analysis, we will need to first calculate the distances between 
 All calculations within the `dodgr` library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.
 :::
 
-### Network data {#loading-data-w08}
+### Acquiring network data {#loading-data-w08}
 The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.
 
 | File                                    | File Type         | Link |
