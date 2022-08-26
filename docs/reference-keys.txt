@@ -1,6 +1,12 @@
+fig:iuc-download
+fig:iuc-in-excel
 fig:network-graph-picca
 geodemographics
 reading_w07
+geodemographics-1
+internet-user-classification-i
+task_w07_1
+k-means-clustering
 transport-network-analysis
 reading-w08
 network-analysis
