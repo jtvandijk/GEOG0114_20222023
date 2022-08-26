@@ -64,11 +64,11 @@ Now the data are loaded we can move to acquiring our spatial data. As the IUC is
 3. Select *English Lower Layer Super Output Areas, 2011* and click **List Areas**.
 4. Select *Liverpool* from the list and click **Extract Boundary Data**.
 5. Wait until loaded and download the `BoundaryData.zip` file.
-6. Unzip and save the file in the usual fashion.
+6. Unzip and save the file.
 
 <div class="note">
 **Note**<br/>
-You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB). Also, as we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today we do not need all LSOAs in Great Britain. Of course, you could have used this file and filtered out all LSOAs that fall within the boundaries of Liverpool.
+You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB). Also, as we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today we do not need all LSOAs in Great Britain..
 </div>
 
 Now we got the administrative boundary data, we can prepare the IUC map by joining our `csv` file with the IUC classification to the `shapefile`.
@@ -184,7 +184,7 @@ wss_values <- list()
 
 # execute a k-means clustering for k=1, k=2, ..., k=15
 for (i in 1:15) {
-  wss_values[i] <- sum(kmeans(cluster_data,centers=i)$withinss)
+  wss_values[i] <- sum(kmeans(cluster_data,centers=i,iter.max=30)$withinss)
 }
 
 # inspect
@@ -218,7 +218,7 @@ The interpretation of an elbow plot can be quite subjective and often multiple o
 
 Now we have decided on the number of clusters (i.e. **7** clusters), we can run our cluster analysis. We will be running this analysis 10 times because there is an element of randomness within the clustering, and we want to make sure we get the optimal clustering output.
 
-```{r 09-run-that-cluster, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
+```{r 07-run-that-cluster, warnings=FALSE, message=FALSE, cache=FALSE, tidy=TRUE}
 # create empty list to store the results of the clustering
 clusters <- list()
 
@@ -307,16 +307,16 @@ The creation of a geodemographic classification is an **iterative process** of t
 
 Try to create a **R function** that: 
 
-- takes *at least* the following three arguments: **a data frame that contains your input data**, **the number of clusters that you want**, and **a list of input variables**;
-- executes a **k-means** clustering on the input variables and the specified number of clusters; and,
-- produces a `csv` file that contains the **table of means** of the solution.
+1. takes *at least* the following three arguments: **a data frame that contains your input data**, **the number of clusters that you want**, and **a list of input variables**;
+2. executes a **k-means** clustering on the input variables and the specified number of clusters; and,
+3. produces a `csv` file that contains the **table of means** of the solution.
 
 #### Tips {-}
-- The list of input variables does not have to be a list of *names*, but can also be a list containing the index values of the columns.
-- Google is your friend.
-- Your function should look something like: `automate_k_means(dataframe,number_of_clusters,input_variables)`
-- Feel free to add optional variables that you need to specify if that makes it easier.
-- Have a look at [Hadley Wickhams explanation of functions](https://r4ds.had.co.nz/functions.html) in R.
+1. The list of input variables does not have to be a list of *names*, but can also be a list containing the index values of the columns.
+2. Google is your friend.
+3. Your function should look something like: `automate_k_means(dataframe,number_of_clusters,input_variables)`
+4. Feel free to add optional variables that you need to specify if that makes it easier.
+5. Have a look at [Hadley Wickhams explanation of functions](https://r4ds.had.co.nz/functions.html) in R.
 
 ## Before you leave {#byl-w07}
 Having finished this tutorial, you should now understand the basics of a geodemographic classification. In addition, you should have written a simple function. Although [you have now reached the end of this week's content](https://www.youtube.com/watch?v=8iwBM_YB1sE), you could try and improve your function. Consider:

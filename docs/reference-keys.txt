@@ -12,8 +12,8 @@ byl-w07
 transport-network-analysis
 reading-w08
 network-analysis
-accessibility-to-fast-food-outlets
+accessibility-in-portsmouth
 loading-data-w08
-case-study
+measuring-accessibility
 task-w08
 byl-w08

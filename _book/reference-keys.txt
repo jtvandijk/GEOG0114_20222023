@@ -1,3 +1,9 @@
-fig:iuc-download
-fig:iuc-in-excel
 fig:network-graph-picca
+transport-network-analysis
+reading-w08
+network-analysis
+accessibility-in-portsmouth
+loading-data-w08
+measuring-accessibility
+task-w08
+byl-w08

@@ -23,7 +23,7 @@ Understanding that networks are formed through the connections of vertices and e
 
 Alongside this development of routing applications, GIS analysts, geographers and public health specialists have also identified the utility of network analysis within geographic space to calculate distance-based measurement and coverage buffers that can be used as part of accessibility studies that look to understand the provision of a specific resource (e.g. greenspaces, hospitals, and fast-food stores) to a certain area of population.
 
-### Accessibility to fast-food outlets
+### Accessibility in Portsmouth
 For this week's practical, we will be using Portsmouth in the UK as our area of interest for our analysis. One prominent topic within the city is the issue of public health and childhood obesity. According to figures released in March 2020 by Public Health England, more than one in three school pupils are overweight or obese by the time they finish primary school within the city - higher than the national average of one in four. One potential contributor to the health crisis is the ease and availability of fast-food outlets in the city. In the following, we will measure the accessibility of fast-food outlets within specific walking distances of all school in Portsmouth starting at 400m, then 800m and finally a 1km walking distance. We will then aggregate these results to the Lower Super Output Area (LSOA) and overlay these results with some socio-economic variable.
 
 To execute this analysis, we will need to first calculate the distances between our schools and fast-food outlets. This involves calculating the shortest distance a child would walk between a school and a fast-food outlet, using roads or streets. We will use the `dodgr` R package to conduct this transport network analysis.
@@ -33,7 +33,7 @@ To execute this analysis, we will need to first calculate the distances between 
 All calculations within the `dodgr` library currently need to be run in WGS84/4236. This is why we will not transform the CRS of our data in this practical.
 :::
 
-### Loading your data {#loading-data-w08}
+### Network data {#loading-data-w08}
 The first dataset we need to download will help with the visualisation of our results: boundary data that contains an outline of Portsmouth.
 
 | File                                    | File Type         | Link |
@@ -113,7 +113,7 @@ ports_roads_edges$oneway <- "no"
 
 Now we have the network edges, we can turn this into a graph-representation that allows for the calculation of network-based accessibility statistics. 
 
-### Case study
+### Measuring accessibility
 Before we can construct our full network graph for the purpose of accessibility analysis, we need to also provide our **Origin** and **Destination** points, i.e. the data points we wish to calculate the distances between. According to the `dodgr` documentation, these points need to be in either a vector or matrix format, containing the two coordinates for each point for the origins and for the destinations.
 
 As for our Portsmouth scenario we are interested in calculating the shortest distances between schools and fast-food outlets, we need to try and download these datasets - again we will turn to OpenStreetMap. Following a similar structure to our query above, we will use our knowledge of OpenStreetMap `keys` and `values` to extract the points of Origins (schools) and Destinations (fast-food outlets) we are interested in:
@@ -224,7 +224,7 @@ plot(ports_schools)
 
 Just from this simple plot, we can see across our distances some clear geographical patterns in accessibility of fast-food outlets for schools. We can improve this plot by making a proportional symbols map that show the different counts of fast-food outlets for each school in Portsmouth with a background of the Portsmouth City outline that you loaded at the beginning of this practical.
 
-```{r w10-bubble-maps, warnings=FALSE, message=FALSE, cache=FALSE, tidy=FALSE}
+```{r 07-bubble-maps, warnings=FALSE, message=FALSE, cache=FALSE, tidy=FALSE}
 # create proportional symbol map
 tm_shape(portsmouth_city) + 
   tm_fill(palette = "grey") +
