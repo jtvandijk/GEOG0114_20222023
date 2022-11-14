@@ -2,7 +2,7 @@
 This week we will cover a different type of data: network data. We will take a look at how we can use network data to measure accessibility using the `dodgr` R library. We will calculate the network distances between combinations of locations (i.e. a set of origins and a set of destinations). These distances can then, for instance, be used to calculate the number of a resource (e.g. fast-food outlets) within a certain distance of a Point of Interest (e.g. a school or population-weighted centroid). 
 
 ## Lecture slides {#lecture_w08}
-You can download the slides of this week's lecture here: [[Link]](https://github.com/jtvandijk/GEOG0114/tree/master/data/slides/w08_psa.pdf) 
+You can download the slides of this week's lecture here: [[Link]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w08_psa.pdf) 
 
 ## Reading list {#reading-w08}
 #### Essential readings {-}
