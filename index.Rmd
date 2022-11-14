@@ -20,17 +20,17 @@ knitr::include_graphics('images/general/data_science_welcome_sm.jpg')
 
 | Week          | Section          | Topic |
 | :---          |:---------        |:------------------ |
-| 1             | Foundational Concepts | [Spatial analysis for data science]() |
-| 2             | Foundational Concepts | [Graphical representation of spatial data]() | 
-| 3             | Foundational Concepts | [Spatial autocorrelation]() | 
-| 4             | Raster data | [Suitability Mapping I]() |
-| 5             | Raster data | [Suitability Mapping II]() |
+| 1             | Foundational Concepts | [Spatial analysis for data science](https://uclpg-msc-sgds.github.io/GEOG0114/spatial-analysis-for-data-sciences.html) |
+| 2             | Foundational Concepts | [Graphical representation of spatial data](https://uclpg-msc-sgds.github.io/GEOG0114/graphical-representation-of-spatial-data.html) | 
+| 3             | Foundational Concepts | [Spatial autocorrelation](https://uclpg-msc-sgds.github.io/GEOG0114/spatial-autocorrelation.html) | 
+| 4             | Raster data | [Suitability Mapping I](https://uclpg-msc-sgds.github.io/GEOG0114/suitability-mapping-part-1.html) |
+| 5             | Raster data | [Suitability Mapping II](https://uclpg-msc-sgds.github.io/GEOG0114/suitability-mapping-part-2.html) |
 |               | **Reading week** | **Reading week** |
-| 6             | Raster data | [Geostatistics]() |
+| 6             | Raster data | [Geostatistical Modelling](https://uclpg-msc-sgds.github.io/GEOG0114/geostatistical-modelling.html) |
 | 7             | Applied Spatial Analysis | [Geodemographics](geodemographics.html) |
 | 8             | Applied Spatial Analysis | [Transport network analysis](transport-network-analysis.html) |
-| 9             | Spatial models | [Spatial models I]() | 
-| 10            | Spatial models | [Spatial models II]() | 
+| 9             | Spatial models | [Spatial models I](https://uclpg-msc-sgds.github.io/GEOG0114/index.html) | 
+| 10            | Spatial models | [Spatial models II](https://uclpg-msc-sgds.github.io/GEOG0114/index.html) | 
 
 :::note
 **Note** <br />
