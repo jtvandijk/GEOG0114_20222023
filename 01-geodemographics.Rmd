@@ -1,6 +1,9 @@
 # Geodemographics
 This week we will see how we can use socio-demographic and socio-economic data to characterise neighbourhoods using **geodemographics**. Geodemographics is the "*analysis of people by where they live’ (Harris et al. 2005) and as such entails representing the individual and collective identities that are manifest in observable neighbourhood structure*" ([Longley 2012](https://www.tandfonline.com/doi/pdf/10.1080/13658816.2012.719623?needAccess=true)). We will look at geodemographics by focusing on a existing geodemographic classification known as the [Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification).
 
+## Lecture slides {#lecture_w07}
+You can download the slides of this week's lecture here: [[Link]](https://github.com/jtvandijk/GEOG0114/tree/master/data/slides/w07_psa.pdf) 
+
 ## Reading list {#reading_w07}
 #### Essential readings {-}
 - Longley, P. A. 2012. Geodemographics and the practices of geographic information science. *International Journal of Geographical Information Science* 26(12): 2227-2237. [[Link]](https://doi.org/10.1080/13658816.2012.719623)
